@@ -25,8 +25,8 @@ module ActiveMerchant
   
   class Connection
     MAX_RETRIES = 3
-    OPEN_TIMEOUT = 60
-    READ_TIMEOUT = 60
+    OPEN_TIMEOUT = 360
+    READ_TIMEOUT = 360
     VERIFY_PEER = true
     RETRY_SAFE = false
     RUBY_184_POST_HEADERS = { "Content-Type" => "application/x-www-form-urlencoded" }

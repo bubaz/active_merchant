@@ -9,10 +9,10 @@ module ActiveMerchant #:nodoc:
       base.retry_safe = false
 
       base.superclass_delegating_accessor :open_timeout
-      base.open_timeout = 60
+      base.open_timeout = 360
 
       base.superclass_delegating_accessor :read_timeout
-      base.read_timeout = 60
+      base.read_timeout = 360
       
       base.superclass_delegating_accessor :logger
       base.superclass_delegating_accessor :wiredump_device

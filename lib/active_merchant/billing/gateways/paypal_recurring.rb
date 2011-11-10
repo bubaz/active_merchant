@@ -197,6 +197,16 @@ module ActiveMerchant #:nodoc:
                     xml.tag! 'n2:Amount', amount(options[:trialamount]), 'currencyID' => options[:currency] || 'USD'
                   end        
                 end
+                if !options[:address].blank?
+                  xml.tag!(ns2 + 'Address') do
+                      xml.tag!(ns2 + 'Street1', options[:address][:address_1]) # Required
+                      xml.tag!(ns2 + 'Street2', options[:address][:address_2]) unless credit_card[:street_2].blank? # Optional
+                      xml.tag!(ns2 + 'CityName', options[:address][:city]) # Required
+                      xml.tag!(ns2 + 'StateOrProvince', options[:address][:state]) # Required
+                      xml.tag!(ns2 + 'PostalCode', options[:address][:zip]) # Required
+                      xml.tag!(ns2 + 'Country', options[:address][:country] ||= "US") # Required
+                    end 
+                end    
                 if !options[:initial_amount].blank?
                   xml.tag! 'n2:ActivationDetails' do
                     xml.tag! 'n2:InitialAmount', amount(options[:initial_amount]), 'currencyID' => options[:currency] || 'USD'
